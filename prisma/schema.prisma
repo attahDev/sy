@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+ 
+}
+
+model JoinUsSubmission {
+  id                   String   @id @default(cuid())
+  fullName             String
+  email                String
+  phoneNumber          String?
+  cityRegion           String
+  organizationCompany  String?
+  jobTitleRole         String?
+  attendingAs          String
+  areasOfInterest      String[]
+  hopingToGain         String?
+  joinAfterEvent       String?
+  createdAt            DateTime @default(now())
+}
+
+model BusinessSupportSubmission {
+  id                 String   @id @default(cuid())
+  fullName           String
+  email              String
+  businessName       String
+  stageOfBusiness    String
+  industry           String
+  supportNeeded      String[]
+  monthlyRevenue     String?
+  biggestChallenge   String
+  interestedIn       String[]
+  createdAt          DateTime @default(now())
+}
+
+model SpeakerApplication {
+  id                          String   @id @default(cuid())
+  fullName                    String
+  email                       String
+  phoneNumber                 String?
+  organisation                String
+  areaOfExpertise             String
+  speakingTopics              String
+  previousSpeakingExperience  String?
+  availability                String?
+  link                        String?
+  whySpeaker                  String
+  createdAt                   DateTime @default(now())
+}
+
+model CyberTrainingSignup {
+  id                    String   @id @default(cuid())
+  fullName              String
+  email                 String
+  phoneNumber           String?
+  organisationBusiness  String?
+  roleJobTitle          String?
+  levelOfKnowledge      String
+  areasOfInterest       String[]
+  whatToLearn           String
+  preferredFormat       String
+  receiveUpdates        String?
+  createdAt             DateTime @default(now())
+}
+
+model ChangeMakerNomination {
+  id                     String   @id @default(cuid())
+  yourName               String
+  yourEmail              String
+  nomineeName            String
+  nomineeOrganisation    String?
+  nomineeLocation        String?
+  category               String
+  whyNominate            String
+  achievements           String?
+  links                  String?
+  referee                String?
+  createdAt              DateTime @default(now())
+}
