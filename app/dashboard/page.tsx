@@ -7,13 +7,13 @@ const tools = [
     href: "/dashboard/academy",
     icon: GraduationCap,
     description: "Courses, lessons, quizzes, and certification.",
-    ready: false,
+    ready: true,
   },
   {
     title: "Climate Change",
     href: "/dashboard/green-impact",
     icon: Leaf,
-    description: "Green Impact learning, actions, and climate insights.",
+    description: "Course browsing and lessons are live; actions log, leaderboard, and green exchange are next.",
     ready: false,
   },
   {
@@ -37,8 +37,9 @@ export default function DashboardHomePage() {
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-extrabold text-[#001F3F]">Workspace</h1>
       <p className="mt-2 max-w-2xl text-sm text-[#6B7280]">
-        South Yorkshire member tools, using the same GMBTE backend. Community is
-        live; Academy, Climate Change, and Business Studio are next to port.
+        South Yorkshire member tools, using the same GMBTE backend. Community
+        and Academy are live; Climate Change has course browsing/lessons but
+        not yet its full toolset, and Business Studio is next to port.
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
