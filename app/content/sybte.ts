@@ -85,6 +85,11 @@ export const navigation: NavItem[] = [
         href: "/awards",
         description: "Recognising South Yorkshire change makers.",
       },
+      {
+        label: "News",
+        href: "/news",
+        description: "Announcements, partner news and press coverage.",
+      },
     ],
   },
   { label: "Partners", href: "/partners" },

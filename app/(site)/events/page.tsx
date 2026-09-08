@@ -14,6 +14,7 @@ import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import EventProgrammeSection from "../../components/EventProgram";
+import UpcomingEventsSection from "../../components/site/UpcomingEventsSection";
 import { Section, SectionHeader, Rule } from "../../components/site/Section";
 import { Chip } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
@@ -110,6 +111,8 @@ export default function EventsPage() {
           Free cyber training
         </ModalButton>
       </PageHero>
+
+      <UpcomingEventsSection />
 
       {/* Featured event */}
       <Section tone="white">
