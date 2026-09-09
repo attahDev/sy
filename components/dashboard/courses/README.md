@@ -31,10 +31,11 @@ Same GMBTE `/courses` API contract as the original — see `lib/coursesApi.ts`.
   instead. Worth raising with whoever owns GMBT-Updated-Frontend.
 
 ## Not ported — real gaps, not oversights
-- **Mock exam** (`MockExamPage.tsx`, 242 lines) — the "Take mock exam" link
-  on the course overview page currently 404s. `fetchMockExam`,
-  `submitMockExam`, `fetchMockExamHistory` aren't in `lib/coursesApi.ts`
-  yet either.
+- **Mock exam history widget** (`fetchMockExamHistory`, `coursePathFor`) —
+  the exam-taking flow itself is ported (`MockExamPage.tsx`, works from
+  the course overview's "Take mock exam" link), but the dashboard-wide
+  "every mock exam you've taken, across every course" summary widget
+  isn't built.
 - **Academy's richer landing page** — GMBTE's actual `/dashboard/academy`
   shows `EducationToolkit` + `EducationToolkitContent` +
   `EducationToolkitCommunity` (marketing/orientation sections) before the

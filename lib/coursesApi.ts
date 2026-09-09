@@ -185,7 +185,41 @@ export async function submitCourseProject(courseSlug: string, submissionUrl: str
   return data?.data ?? data;
 }
 
-// ───────────────────────── Admin project review ─────────────────────────
+// ───────────────────────── Mock exam ─────────────────────────
+// Ported from GMBT-Updated-Frontend's src/lib/coursesApi.ts. Whole-course
+// practice exam (distinct from per-lesson quizzes above), server-graded,
+// issues a certificate on a pass.
+
+export type MockExamQuestion = { id: string; question: string; options: string[] };
+export type MockExamAttemptSummary = {
+  id: string; score: number; grade: string; passed: boolean;
+  correct: number; total: number; attemptedAt: string;
+};
+export type MockExam = {
+  id: string; title: string; passScore: number; timeLimitMinutes: number | null;
+  questionCount: number; questions: MockExamQuestion[]; attempts: MockExamAttemptSummary[]; bestScore: number;
+};
+
+/** Returns null (not an error) when the course has no mock exam set up yet. */
+export async function fetchMockExam(courseSlug: string): Promise<MockExam | null> {
+  try {
+    const { data } = await api.get(`/courses/by-slug/${courseSlug}/mock-exam`);
+    return data?.data ?? data ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export type MockExamResult = {
+  attempt: MockExamAttemptSummary;
+  certificate: { id: string; verificationCode: string; pdfUrl: string | null } | null;
+  passed: boolean; score: number; grade: string; correct: number; total: number;
+};
+
+export async function submitMockExam(courseSlug: string, answers: Record<string, number>): Promise<MockExamResult> {
+  const { data } = await api.post(`/courses/by-slug/${courseSlug}/mock-exam/submit`, { answers });
+  return data?.data ?? data;
+}
 // GMBTE gates these @Roles(MENTOR, ADMIN) — since mentors aren't in scope
 // yet, this dashboard only ever calls them as an admin. The backend itself
 // doesn't need any change for that; a member with role !== "ADMIN" simply
