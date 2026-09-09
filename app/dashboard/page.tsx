@@ -37,7 +37,7 @@ export default function DashboardHomePage() {
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-extrabold text-[#001F3F]">Workspace</h1>
       <p className="mt-2 max-w-2xl text-sm text-[#6B7280]">
-        South Yorkshire member tools, using the same GMBTE backend. Community,
+        South Yorkshire member tools, using the same SYBTE backend. Community,
         Academy, Business Plan, and Opportunity Insights are live; Climate
         Change has course browsing/lessons but not yet its full toolset, and
         the rest of Business Studio is next to port.

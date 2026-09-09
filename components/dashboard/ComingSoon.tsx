@@ -10,7 +10,7 @@ export default function ComingSoon({
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D7263D]">
-        Porting from GMBT
+        Porting from SYBTE
       </p>
       <h1 className="mt-2 text-3xl font-extrabold text-[#001F3F]">{title}</h1>
       <p className="mt-3 text-sm leading-relaxed text-[#6B7280]">{description}</p>
