@@ -1,5 +1,5 @@
 // Ported as-is.
-import AIDashboardCard from "../AIDashboardCard";
+import AIDashboardCard from "@/components/dashboard/shared/AIDashboardCard";
 import type { IdeaContent } from "@/lib/ideaEngineApi";
 
 const defaultStats = [

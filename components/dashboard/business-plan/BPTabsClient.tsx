@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { BPDashboardSection } from "./BP/BPDashboardSection";
 import { FinDashboardSection } from "./FI/FIDashboardSection";
 import { RoadmapDashboardSection } from "./RM/RMDashboardSection";
-import GenerateIdeaForm from "./GenerateIdeaForm";
+import GenerateIdeaForm from "@/components/dashboard/shared/GenerateIdeaForm";
 import { getIdea, type IdeaContent } from "@/lib/ideaEngineApi";
 import { getCurrentIdeaId } from "@/lib/currentIdea";
 import { getBusinessPlanById } from "@/lib/businessPlannerApi";

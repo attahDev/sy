@@ -2,7 +2,7 @@
 
 // Ported as-is.
 import { useEffect, useState } from "react";
-import AIDashboardCard from "../AIDashboardCard";
+import AIDashboardCard from "@/components/dashboard/shared/AIDashboardCard";
 import type { IdeaContent } from "@/lib/ideaEngineApi";
 import { updatePlanProgress } from "@/lib/businessPlannerApi";
 
