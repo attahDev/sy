@@ -1,10 +1,6 @@
-import ComingSoon from "@/components/dashboard/ComingSoon";
+import BPTabsClient from "@/components/dashboard/business-plan/BPTabsClient";
 
+// Replaces the ComingSoon placeholder.
 export default function BusinessPlanPage() {
-  return (
-    <ComingSoon
-      title="Business Plan"
-      description="Roadmap, financials, and plan tabs from GMBT Business Studio. Uses /business-planner on the existing backend."
-    />
-  );
+  return <BPTabsClient />;
 }
