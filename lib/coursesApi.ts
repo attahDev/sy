@@ -159,9 +159,8 @@ export async function submitQuiz(
 }
 
 // ───────────────────────── Certification (project + review) ─────────────────────────
-// Mock exam and mentor-review endpoints from the original coursesApi.ts
-// aren't ported yet — see components/dashboard/courses/README for what's
-// still open.
+// Mock exam endpoints from the original coursesApi.ts aren't ported yet —
+// see components/dashboard/courses/README for what's still open.
 
 export type CertificationStatus = {
   certificateStatus: "NOT_STARTED" | "IN_PROGRESS" | "QUIZZES_PASSED" | "PROJECT_SUBMITTED" | "CHANGES_REQUESTED" | "CERTIFIED";
@@ -183,5 +182,37 @@ export async function fetchCertificationStatus(courseSlug: string): Promise<Cert
 
 export async function submitCourseProject(courseSlug: string, submissionUrl: string) {
   const { data } = await api.post(`/courses/by-slug/${courseSlug}/submit-project`, { submissionUrl });
+  return data?.data ?? data;
+}
+
+// ───────────────────────── Admin project review ─────────────────────────
+// GMBTE gates these @Roles(MENTOR, ADMIN) — since mentors aren't in scope
+// yet, this dashboard only ever calls them as an admin. The backend itself
+// doesn't need any change for that; a member with role !== "ADMIN" simply
+// never sees the admin nav entry / route that calls these.
+
+export type PendingReview = {
+  studentUserId: string;
+  studentName: string;
+  courseId: string;
+  courseTitle: string;
+  courseSlug: string;
+  school: string | null;
+  submissionUrl: string | null;
+  submittedAt: string | null;
+};
+
+export async function fetchPendingReviews(): Promise<PendingReview[]> {
+  const { data } = await api.get(`/courses/pending-reviews`);
+  return data?.data ?? data ?? [];
+}
+
+export async function reviewCourseProject(
+  courseSlug: string,
+  studentUserId: string,
+  approve: boolean,
+  feedback?: string,
+) {
+  const { data } = await api.post(`/courses/by-slug/${courseSlug}/review/${studentUserId}`, { approve, feedback });
   return data?.data ?? data;
 }

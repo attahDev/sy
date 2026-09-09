@@ -14,6 +14,14 @@ Same GMBTE `/courses` API contract as the original — see `lib/coursesApi.ts`.
 - Lesson player — `LessonContent.tsx` (all section types, per-section quiz
   grading), `CourseSidebar.tsx`, `LessonNavigation.tsx`.
 - Project submission / certification status — `ProjectCertificationCard.tsx`.
+- **Admin project review** (`/dashboard/admin/course-reviews`, admin-only
+  nav entry) — since mentors aren't in scope yet, this calls the same
+  GMBTE endpoints (`@Roles(MENTOR, ADMIN)`) as an admin instead. Without
+  this, a member who finishes a course and submits their final project
+  would sit in `PROJECT_SUBMITTED` forever with nobody able to review it —
+  this closes that loop. First admin-gated route in this dashboard, so
+  `AdminGuard.tsx` is new client-side role-check scaffolding, not an
+  existing pattern.
 - **One real bug fixed, not just ported**: the original `CourseSidebar.tsx`
   and `LessonNavigation.tsx` track lesson completion via a browser-local
   `courseProgress.ts` (localStorage) store that's disconnected from the
@@ -27,9 +35,6 @@ Same GMBTE `/courses` API contract as the original — see `lib/coursesApi.ts`.
   on the course overview page currently 404s. `fetchMockExam`,
   `submitMockExam`, `fetchMockExamHistory` aren't in `lib/coursesApi.ts`
   yet either.
-- **Mentor project review** (`fetchPendingReviews`, `reviewCourseProject`)
-  — admin/mentor-side of the certification workflow, not member-facing,
-  intentionally left out of this pass.
 - **Academy's richer landing page** — GMBTE's actual `/dashboard/academy`
   shows `EducationToolkit` + `EducationToolkitContent` +
   `EducationToolkitCommunity` (marketing/orientation sections) before the
