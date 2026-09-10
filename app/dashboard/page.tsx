@@ -13,8 +13,8 @@ const tools = [
     title: "Climate Change",
     href: "/dashboard/green-impact",
     icon: Leaf,
-    description: "Course browsing and lessons are live; actions log, leaderboard, and green exchange are next.",
-    ready: false,
+    description: "Impact tracking, green exchange, leaderboard, and courses.",
+    ready: true,
   },
   {
     title: "Community",
@@ -38,9 +38,9 @@ export default function DashboardHomePage() {
       <h1 className="text-3xl font-extrabold text-[#001F3F]">Workspace</h1>
       <p className="mt-2 max-w-2xl text-sm text-[#6B7280]">
         South Yorkshire member tools, using the same SYBTE backend. Community,
-        Academy, Business Plan, and Opportunity Insights are live; Climate
-        Change has course browsing/lessons but not yet its full toolset, and
-        the rest of Business Studio is next to port.
+        Academy, Climate Change, Business Plan, and Opportunity Insights are
+        live; the rest of Business Studio (Studio dashboard, Idea Generator)
+        is next to port.
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">

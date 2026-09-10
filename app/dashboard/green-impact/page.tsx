@@ -1,20 +1,10 @@
-import CoursesGrid from "../../../components/dashboard/courses/CoursesGrid";
+import ClimateActionIndex from "@/components/dashboard/green-impact/ClimateActionIndex";
 
-// Replaces the ComingSoon placeholder with the shared course engine
-// (category="climate"). GMBT-Updated-Frontend's real /dashboard/green-impact
-// (ClimateActionIndex) is a much bigger composite page — 8 sections beyond
-// courses: SustainabilityStats, GreenExchange, ExpertSupport,
-// GreenInnovationProjects, MeasureYourImpact, ClimateInsightsData, plus a
-// RightRail (leaderboard, AI advisor, log-a-green-action form, achievements).
-// None of those are ported yet — see components/dashboard/courses/README.
+// Replaces the interim course-grid-only version — this is now the real
+// composite landing page (SustainabilityStats, GreenExchange,
+// ExpertSupport, GreenInnovationProjects, MeasureYourImpact,
+// ClimateInsightsData, plus RightRail: profile, achievements,
+// leaderboard, AI advisor), matching GMBTE's actual /dashboard/green-impact.
 export default function GreenImpactPage() {
-  return (
-    <CoursesGrid
-      category="climate"
-      basePath="/dashboard/green-impact"
-      title="Sustainability Courses & Learning Materials"
-      eyebrow="Green Impact"
-      breadcrumbLabel="Climate Change"
-    />
-  );
+  return <ClimateActionIndex />;
 }
