@@ -9,8 +9,7 @@ import {
   fetchComments,
   fetchCommunityFeed,
   fetchMyPosts,
-  likePost,
-  unlikePost,
+  toggleLike as apiToggleLike,
   type CommunityComment,
   type CommunityPost,
 } from "@/lib/communityApi";
@@ -76,23 +75,21 @@ export default function CommunityPage() {
                 <div
                   key={post.id}
                   className={`flex items-center gap-2 rounded-xl px-4 py-3 text-sm ${
-                    post.status === "FLAGGED" || post.status === "PENDING"
+                    post.status === "PENDING"
                       ? "bg-amber-50 text-amber-800"
                       : "bg-red-50 text-red-700"
                   }`}
                 >
-                  {post.status === "FLAGGED" || post.status === "PENDING" ? (
+                  {post.status === "PENDING" ? (
                     <Clock className="h-4 w-4 shrink-0" />
                   ) : (
                     <XCircle className="h-4 w-4 shrink-0" />
                   )}
                   <span className="font-medium">{post.title}</span>
                   <span className="text-xs opacity-75">
-                    {post.status === "FLAGGED"
-                      ? "— pulled from the feed, awaiting admin review"
-                      : post.status === "PENDING"
-                        ? "— awaiting admin approval"
-                        : "— removed"}
+                    {post.status === "PENDING"
+                      ? "— awaiting admin approval"
+                      : "— removed"}
                   </span>
                 </div>
               ))}
@@ -140,6 +137,7 @@ function Composer({
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [authorRole, setAuthorRole] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -153,15 +151,22 @@ function Composer({
   const reset = () => {
     setTitle("");
     setDescription("");
+    setAuthorRole("");
     pickImage(null);
     setOpen(false);
   };
 
   const submit = async () => {
-    if (!title.trim() || !description.trim() || submitting) return;
+    if (!title.trim() || !description.trim() || !authorRole.trim() || submitting) return;
     setSubmitting(true);
     try {
-      await createCommunityPost({ title, description, image });
+      await createCommunityPost({
+        title,
+        description,
+        authorName,
+        authorRole,
+        image,
+      });
       setMessage("Posted! It's live in the feed now.");
       reset();
       onPosted();
@@ -200,6 +205,12 @@ function Composer({
             placeholder="Tell everyone what happened…"
             rows={3}
             className="w-full resize-none rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:border-[#001F3F] focus:outline-none"
+          />
+          <input
+            value={authorRole}
+            onChange={(e) => setAuthorRole(e.target.value)}
+            placeholder="Your role — e.g. Frontend Developer"
+            className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:border-[#001F3F] focus:outline-none"
           />
 
           {preview && (
@@ -240,7 +251,7 @@ function Composer({
               <button
                 type="button"
                 onClick={submit}
-                disabled={!title.trim() || !description.trim() || submitting}
+                disabled={!title.trim() || !description.trim() || !authorRole.trim() || submitting}
                 className="rounded-full bg-[#D7263D] px-5 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#B81F32] disabled:opacity-50"
               >
                 {submitting ? "Posting…" : "Post"}
@@ -276,9 +287,11 @@ function PostCard({ post }: { post: CommunityPost }) {
     setLikes(next.likes);
     setHasLiked(next.hasLiked);
     try {
-      const result = hasLiked ? await unlikePost(post.id) : await likePost(post.id);
-      setLikes(result.likes);
-      setHasLiked(result.hasLiked);
+      // Backend has one toggle endpoint, not separate like/unlike calls,
+      // and only returns { liked } — the optimistic count set above is
+      // what actually drives the displayed number.
+      const result = await apiToggleLike(post.id);
+      setHasLiked(result.liked);
     } catch {
       setLikes(post.likes);
       setHasLiked(post.hasLiked);

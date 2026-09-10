@@ -5,7 +5,13 @@
 // manual token handling (not the shared axios `api` instance from
 // lib/api.ts). Reads the same "token" localStorage key that lib/api.ts's
 // setStoredToken() writes, so auth stays in sync without extra wiring.
-const BASE = "https://ideaengiene-avcv.onrender.com".replace(/\/+$/, "");
+//
+// Set NEXT_PUBLIC_IDEA_ENGINE_URL once the SY idea-engine (see
+// SOUTH-YORKSHIRE-BACKEND/idea-engine/) is deployed on Render. The
+// fallback below is an unrelated dev deployment — don't rely on it.
+const BASE = (
+  process.env.NEXT_PUBLIC_IDEA_ENGINE_URL ?? "https://ideaengiene-avcv.onrender.com"
+).replace(/\/+$/, "");
 
 function getToken() {
   if (typeof window === "undefined") return "";
