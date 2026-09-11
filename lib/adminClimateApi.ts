@@ -22,7 +22,7 @@ export type GreenProjectInput = {
 };
 
 export async function fetchAdminGreenProjects(): Promise<AdminGreenProject[]> {
-  const { data } = await api.get("/climate/projects");
+  const { data } = await api.get("/climate/admin/projects");
   return data?.data ?? data ?? [];
 }
 

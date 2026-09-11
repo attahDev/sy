@@ -1,11 +1,5 @@
 "use client";
 
-// NOTE: the backend only exposes GET /climate/projects (active projects,
-// public) — there's no GET /climate/admin/projects that also returns
-// inactive ones. So this panel can create/edit projects and can turn an
-// active project inactive, but once a project is hidden it drops out of
-// this list too (no way to bring it back without a DB edit) until a
-// GET /climate/admin/projects admin-list route is added on the backend.
 import { useEffect, useState } from "react";
 import { Loader2, Pencil, Sprout, X } from "lucide-react";
 import {
@@ -159,12 +153,19 @@ export default function AdminGreenProjects() {
 
       <div className="mt-6 space-y-3">
         {projects === null && <p className="text-sm text-[#6B7280]">Loading…</p>}
-        {projects?.length === 0 && <p className="text-sm text-[#6B7280]">No active projects.</p>}
+        {projects?.length === 0 && <p className="text-sm text-[#6B7280]">No projects yet.</p>}
         {projects?.map((p) => (
           <div key={p.id} className="rounded-2xl border border-[#0D1B3E1F] bg-white p-5">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div>
-                <p className="font-semibold text-[#0D1B3E]">{p.title}</p>
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold text-[#0D1B3E]">{p.title}</p>
+                  {!p.isActive && (
+                    <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-gray-600">
+                      Hidden
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-[#6B7280]">
                   £{minorToPounds(p.raisedAmountMinor)} raised of £{minorToPounds(p.goalAmountMinor)} goal
                 </p>
@@ -174,7 +175,7 @@ export default function AdminGreenProjects() {
                   onClick={() => toggleActive(p)}
                   className="rounded-full border border-[#0D1B3E1F] px-3 py-1 text-xs font-medium text-[#0D1B3E]"
                 >
-                  Hide
+                  {p.isActive ? "Hide" : "Show"}
                 </button>
                 <button onClick={() => startEdit(p)} className="text-[#6B7280] hover:text-[#0D1B3E]">
                   <Pencil size={15} />
