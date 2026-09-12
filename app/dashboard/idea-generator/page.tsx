@@ -1,10 +1,9 @@
-import ComingSoon from "@/components/dashboard/ComingSoon";
+import IGDashboardSection from "@/components/dashboard/idea-generator/IGDashboardSection";
 
+// Replaces the ComingSoon placeholder — same real Idea Engine data as
+// Opportunity Insights and Business Plan, just presented as the full
+// scored breakdown (hero, insights, revenue chart, score rings, next
+// steps) rather than those pages' market-research or planning framing.
 export default function IdeaGeneratorPage() {
-  return (
-    <ComingSoon
-      title="Idea Generator"
-      description="This is part of AI Business Studio. The SYBTE page at /dashboard/idea-generator will be ported here with the Idea Engine API."
-    />
-  );
+  return <IGDashboardSection />;
 }
