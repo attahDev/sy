@@ -1,6 +1,6 @@
+"use client";
 // Same pattern as opportunity-insights/MRPreviousReport.tsx — same
 // idea history, same API, presented under the Idea Generator instead.
-"use client";
 import { useEffect, useState } from "react";
 import { listIdeas, type IdeaListItem } from "@/lib/ideaEngineApi";
 
