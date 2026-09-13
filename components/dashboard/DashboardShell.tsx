@@ -8,6 +8,7 @@ import {
   CalendarDays,
   ChevronDown,
   GraduationCap,
+  Inbox,
   Leaf,
   LayoutDashboard,
   LogOut,
@@ -44,15 +45,18 @@ const studioItems = [
 ];
 
 const adminItems = [
+  { label: "Overview", href: "/dashboard/admin", icon: LayoutDashboard },
+  { label: "Courses", href: "/dashboard/admin/courses", icon: GraduationCap },
   { label: "Course reviews", href: "/dashboard/admin/course-reviews", icon: ShieldCheck },
   { label: "Events", href: "/dashboard/admin/events", icon: CalendarDays },
   { label: "News", href: "/dashboard/admin/news", icon: Newspaper },
   { label: "Green projects", href: "/dashboard/admin/green-projects", icon: Sprout },
+  { label: "Form submissions", href: "/dashboard/admin/form-submissions", icon: Inbox },
   { label: "Users", href: "/dashboard/admin/users", icon: UserCog },
 ];
 
 function isActive(pathname: string, href: string) {
-  if (href === "/dashboard") return pathname === "/dashboard";
+  if (href === "/dashboard" || href === "/dashboard/admin") return pathname === href;
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
