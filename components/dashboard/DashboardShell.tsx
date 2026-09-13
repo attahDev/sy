@@ -11,6 +11,7 @@ import {
   LayoutDashboard,
   LogOut,
   Menu,
+  ShieldCheck,
   Sparkles,
   Users,
   X,
@@ -125,6 +126,25 @@ export default function DashboardShell({ children }: { children: React.ReactNode
               </Link>
             ))}
           </div>
+        )}
+
+        {user?.role === "ADMIN" && (
+          <>
+            <div className="my-2 h-px bg-white/10" />
+            <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-white/40">Admin</p>
+            <Link
+              href="/dashboard/admin/course-reviews"
+              onClick={() => setMobileOpen(false)}
+              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+                isActive(pathname, "/dashboard/admin/course-reviews")
+                  ? "bg-white/10 font-semibold text-white"
+                  : "text-white/70 hover:bg-white/5 hover:text-white"
+              }`}
+            >
+              <ShieldCheck className="h-4 w-4" />
+              Course reviews
+            </Link>
+          </>
         )}
       </nav>
 

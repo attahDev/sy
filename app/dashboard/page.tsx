@@ -7,14 +7,14 @@ const tools = [
     href: "/dashboard/academy",
     icon: GraduationCap,
     description: "Courses, lessons, quizzes, and certification.",
-    ready: false,
+    ready: true,
   },
   {
     title: "Climate Change",
     href: "/dashboard/green-impact",
     icon: Leaf,
-    description: "Green Impact learning, actions, and climate insights.",
-    ready: false,
+    description: "Impact tracking, green exchange, leaderboard, and courses.",
+    ready: true,
   },
   {
     title: "Community",
@@ -25,9 +25,9 @@ const tools = [
   },
   {
     title: "Business Studio",
-    href: "/dashboard/ai-studio",
+    href: "/dashboard/business-plan",
     icon: Briefcase,
-    description: "Idea generator, opportunity insights, and business plans.",
+    description: "Business Plan and Opportunity Insights are live. Studio dashboard and Idea Generator are next.",
     ready: false,
   },
 ];
@@ -37,8 +37,10 @@ export default function DashboardHomePage() {
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-extrabold text-[#001F3F]">Workspace</h1>
       <p className="mt-2 max-w-2xl text-sm text-[#6B7280]">
-        South Yorkshire member tools, using the same GMBTE backend. Community is
-        live; Academy, Climate Change, and Business Studio are next to port.
+        South Yorkshire member tools, using the same SYBTE backend. Community,
+        Academy, Climate Change, Business Plan, and Opportunity Insights are
+        live; the rest of Business Studio (Studio dashboard, Idea Generator)
+        is next to port.
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
