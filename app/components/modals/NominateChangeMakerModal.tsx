@@ -130,7 +130,7 @@ export default function NominateChangeMakerModal({
     setLoading(true);
 
     try {
-      const res = await axios.post("/api/norminate", formData);
+      const res = await axios.post("/api/nominate", formData);
 
       toast.success(res.data.message || "Nomination submitted successfully");
 
