@@ -1,3 +1,4 @@
+"use client";
 // Ported as-is from GMBT-Updated-Frontend's ClimateDashboard/Component/
 // RightSide/SustainabilityAchievements.tsx. Colors corrected #001F3F -> #0D1B3E.
 import React, { useEffect, useState } from "react";
