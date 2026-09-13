@@ -64,13 +64,18 @@ export default function GenerateIdeaForm() {
       </p>
       <div className="grid gap-3 sm:grid-cols-2">
         {fields.map((f) => (
-          <input
+          <label
             key={f.key}
-            placeholder={f.placeholder}
-            value={form[f.key]}
-            onChange={set(f.key)}
-            className={`rounded-xl border border-[#E5E7EB] px-3.5 py-2.5 text-sm outline-none focus:border-[#0D1B3E] ${f.key === "business_idea" ? "sm:col-span-2" : ""}`}
-          />
+            className={`flex flex-col gap-1.5 ${f.key === "business_idea" ? "sm:col-span-2" : ""}`}
+          >
+            <span className="text-xs font-semibold text-[#0D1B3E]">{f.label}</span>
+            <input
+              placeholder={f.placeholder}
+              value={form[f.key]}
+              onChange={set(f.key)}
+              className="rounded-xl border border-[#E5E7EB] px-3.5 py-2.5 text-sm outline-none focus:border-[#0D1B3E]"
+            />
+          </label>
         ))}
       </div>
       {error && <p className="mt-3 text-sm text-[#8A1F1F]">{error}</p>}

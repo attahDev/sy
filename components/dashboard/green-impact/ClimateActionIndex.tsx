@@ -10,8 +10,6 @@ import SustainabilityStats from "./SustainabilityStats";
 import RightRail from "./RightRail";
 import SustainabilityLearningSection from "./SustainabilityLearning";
 import MeasureYourImpact from "./MeasureYourImpact";
-import GreenExchange from "./GreenExchange";
-import ExpertSupport from "./ExpertSupport";
 import GreenInnovationProjects from "./GreenInnovationProject";
 import ClimateInsightsData from "./ClimateInsightsData";
 
@@ -25,8 +23,6 @@ export default function ClimateActionIndex() {
           <main className="min-w-0 space-y-6 sm:space-y-8">
             <SustainabilityLearningSection />
             <MeasureYourImpact />
-            <GreenExchange />
-            <ExpertSupport />
             <GreenInnovationProjects />
             <ClimateInsightsData />
           </main>
