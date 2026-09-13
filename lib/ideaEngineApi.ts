@@ -6,11 +6,11 @@
 // lib/api.ts). Reads the same "token" localStorage key that lib/api.ts's
 // setStoredToken() writes, so auth stays in sync without extra wiring.
 //
-// Set NEXT_PUBLIC_IDEA_ENGINE_URL once the SY idea-engine (see
-// SOUTH-YORKSHIRE-BACKEND/idea-engine/) is deployed on Render. The
-// fallback below is an unrelated dev deployment — don't rely on it.
+// Set NEXT_PUBLIC_IDEA_ENGINE_URL explicitly in the environment (Vercel)
+// once it's confirmed working — this fallback is now the real SOUTH-
+// YORKSHIRE-BACKEND/idea-engine/ deployment, not an unrelated dev one.
 const BASE = (
-  process.env.NEXT_PUBLIC_IDEA_ENGINE_URL ?? "https://ideaengiene-avcv.onrender.com"
+  process.env.NEXT_PUBLIC_IDEA_ENGINE_URL ?? "https://south-yorkshire-backend-idea-engiene.onrender.com"
 ).replace(/\/+$/, "");
 
 function getToken() {

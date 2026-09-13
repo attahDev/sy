@@ -5,14 +5,18 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Briefcase,
+  CalendarDays,
   ChevronDown,
   GraduationCap,
   Leaf,
   LayoutDashboard,
   LogOut,
   Menu,
+  Newspaper,
   ShieldCheck,
   Sparkles,
+  Sprout,
+  UserCog,
   Users,
   X,
 } from "lucide-react";
@@ -37,6 +41,14 @@ const studioItems = [
   { label: "Idea Generator", href: "/dashboard/idea-generator" },
   { label: "Opportunity Insights", href: "/dashboard/opportunity-insights" },
   { label: "Business Plan", href: "/dashboard/business-plan" },
+];
+
+const adminItems = [
+  { label: "Course reviews", href: "/dashboard/admin/course-reviews", icon: ShieldCheck },
+  { label: "Events", href: "/dashboard/admin/events", icon: CalendarDays },
+  { label: "News", href: "/dashboard/admin/news", icon: Newspaper },
+  { label: "Green projects", href: "/dashboard/admin/green-projects", icon: Sprout },
+  { label: "Users", href: "/dashboard/admin/users", icon: UserCog },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -132,18 +144,24 @@ export default function DashboardShell({ children }: { children: React.ReactNode
           <>
             <div className="my-2 h-px bg-white/10" />
             <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-white/40">Admin</p>
-            <Link
-              href="/dashboard/admin/course-reviews"
-              onClick={() => setMobileOpen(false)}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
-                isActive(pathname, "/dashboard/admin/course-reviews")
-                  ? "bg-white/10 font-semibold text-white"
-                  : "text-white/70 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              <ShieldCheck className="h-4 w-4" />
-              Course reviews
-            </Link>
+            {adminItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+                    isActive(pathname, item.href)
+                      ? "bg-white/10 font-semibold text-white"
+                      : "text-white/70 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  {item.label}
+                </Link>
+              );
+            })}
           </>
         )}
       </nav>

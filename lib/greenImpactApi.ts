@@ -1,6 +1,7 @@
-// Ported as-is from GMBT-Updated-Frontend's src/lib/greenImpactApi.ts —
-// same GMBTE /green-impact and /green-exchange contract, same envelope
-// unwrapping as every other API client in this repo.
+// Now wired to SY backend's actual /climate routes (ported from GMBTE's
+// /green-impact + /green-exchange contract — same response shapes, only
+// the path prefix changed; /green-exchange itself is unchanged since the
+// backend port kept that same controller path).
 import { api } from "./api";
 import { broadcastGreenImpactUpdate } from "./greenImpactEvents";
 
@@ -30,17 +31,17 @@ export type ClimateInsights = {
 };
 
 export async function fetchGreenStats(): Promise<GreenStats> {
-  const { data } = await api.get("/green-impact/stats");
+  const { data } = await api.get("/climate/stats");
   return data?.data ?? data;
 }
 
 export async function fetchLeaderboard(limit = 10): Promise<Leaderboard> {
-  const { data } = await api.get(`/green-impact/leaderboard?limit=${limit}`);
+  const { data } = await api.get(`/climate/leaderboard?limit=${limit}`);
   return data?.data ?? data;
 }
 
 export async function fetchClimateInsights(): Promise<ClimateInsights> {
-  const { data } = await api.get("/green-impact/climate-insights");
+  const { data } = await api.get("/climate/climate-insights");
   return data?.data ?? data;
 }
 
@@ -72,7 +73,7 @@ export async function sellCredits(listingId: string, quantity: number) {
 }
 
 export async function logGreenAction(input: { type: GreenActionType; co2OffsetKg: number; description?: string; area?: string }) {
-  const { data } = await api.post("/green-impact/actions", input);
+  const { data } = await api.post("/climate/actions", input);
   broadcastGreenImpactUpdate();
   return data;
 }
