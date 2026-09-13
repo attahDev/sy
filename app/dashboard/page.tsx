@@ -70,7 +70,7 @@ export default function DashboardHomePage() {
         Climate Change, Community, and Business Studio are all live.
       </p>
 
-      <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4">
+      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
         {stats.map((s) => (
           <div key={s.label} className="rounded-2xl border border-[#001F3F]/10 bg-white p-4">
             <p className="text-2xl font-extrabold text-[#001F3F]">{s.value ?? "—"}</p>
