@@ -6,7 +6,7 @@ import {
   jsonError,
   jsonSuccess,
 } from "@/app/api/lib/api-helpers";
-import { appendToSheet } from "@/app/api/lib/google-sheet";
+import { submitToBackend } from "@/app/api/lib/backend-forms";
 
 export async function POST(req: Request) {
   try {
@@ -31,20 +31,22 @@ export async function POST(req: Request) {
     if (!biggestChallenge) return jsonError("Biggest challenge is required");
 
     const submittedAt = new Date().toISOString();
-    console.log("SERVICE EMAIL:", process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
-    console.log("SHEET ID:", process.env.GOOGLE_SHEET_ID);
-    await appendToSheet("BusinessSupport",[
-      fullName,
+    await submitToBackend("business-support", {
+      name: fullName,
       email,
-      businessName,
-      stageOfBusiness,
-      industry,
-      supportNeeded.join(", "),
-      monthlyRevenue || "",
-      biggestChallenge,
-      interestedIn.join(", "),
-      submittedAt,
-    ]);
+      data: {
+        fullName,
+        email,
+        businessName,
+        stageOfBusiness,
+        industry,
+        supportNeeded,
+        monthlyRevenue,
+        biggestChallenge,
+        interestedIn,
+        submittedAt,
+      },
+    });
 
     return jsonSuccess(
       "Business Support form submitted successfully",
@@ -63,7 +65,7 @@ export async function POST(req: Request) {
       201
     );
   } catch (error) {
-    console.error("Google Sheet Error:", error);
+    console.error("Form submission error (business-support):", error);
     return jsonError("Something went wrong while submitting the form", 500);
   }
 }

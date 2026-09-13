@@ -193,7 +193,7 @@ export default function JoinUsModal({
           </h2>
 
           <p className="mt-7 font-dm text-[13px] leading-[1.6] text-[#6B6B6B]">
-            Register for the South Yorkshire Black Tech Expo — 10 April 2026
+            Join the South Yorkshire Black Tech Expo platform and community.
           </p>
         </div>
 

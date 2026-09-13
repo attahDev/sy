@@ -4,7 +4,6 @@ import {
   Accessibility,
   Activity,
   HeartPulse,
-  Info,
   Lightbulb,
   Microscope,
   Network,
@@ -21,7 +20,6 @@ import {
   CheckList,
   FeatureCard,
   Monogram,
-  NoteCallout,
 } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 import { contactDetails, team } from "../../content/sybte";
@@ -332,15 +330,6 @@ export default function DigitalHealthPage() {
               </ModalButton>
             </Reveal>
 
-            <Reveal delay={220} className="mt-10">
-              <NoteCallout title="Before anything is published" icon={Info}>
-                <p>
-                  This page sets out intended direction. Specific projects,
-                  partnerships, research activity and impact figures are only
-                  added once they are formally confirmed and approved.
-                </p>
-              </NoteCallout>
-            </Reveal>
           </div>
 
           <Reveal delay={130}>
