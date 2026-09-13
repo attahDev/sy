@@ -6,7 +6,7 @@ import {
   jsonError,
   jsonSuccess,
 } from "@/app/api/lib/api-helpers";
-import { appendToSheet } from "@/app/api/lib/google-sheet";
+import { submitToBackend } from "@/app/api/lib/backend-forms";
 
 export async function POST(req: Request) {
   try {
@@ -37,19 +37,23 @@ export async function POST(req: Request) {
 
     const submittedAt = new Date().toISOString();
 
-    await appendToSheet("Nominate", [
-      yourName,
-      yourEmail,
-      nomineeName,
-      nomineeOrganisation || "",
-      nomineeLocation || "",
-      category,
-      whyNominate,
-      achievements || "",
-      links || "",
-      referee || "",
-      submittedAt,
-    ]);
+    await submitToBackend("nominate", {
+      name: yourName,
+      email: yourEmail,
+      data: {
+        yourName,
+        yourEmail,
+        nomineeName,
+        nomineeOrganisation,
+        nomineeLocation,
+        category,
+        whyNominate,
+        achievements,
+        links,
+        referee,
+        submittedAt,
+      },
+    });
 
     return jsonSuccess(
       "Nomination submitted successfully",
@@ -69,7 +73,7 @@ export async function POST(req: Request) {
       201
     );
   } catch (error) {
-    console.error("Google Sheet Error:", error);
+    console.error("Form submission error (nominate):", error);
     return jsonError("Something went wrong while submitting the form", 500);
   }
 }
