@@ -6,7 +6,7 @@ import {
   jsonError,
   jsonSuccess,
 } from "@/app/api/lib/api-helpers";
-import { appendToSheet } from "@/app/api/lib/google-sheet";
+import { submitToBackend } from "@/app/api/lib/backend-forms";
 
 export async function POST(req: Request) {
   try {
@@ -32,19 +32,23 @@ export async function POST(req: Request) {
 
     const submittedAt = new Date().toISOString();
 
-    await appendToSheet("CyberTraining", [
-      fullName,
+    await submitToBackend("cyber-training", {
+      name: fullName,
       email,
-      phoneNumber || "",
-      organisationBusiness || "",
-      roleJobTitle || "",
-      levelOfKnowledge,
-      areasOfInterest.join(", "),
-      whatToLearn,
-      preferredFormat,
-      receiveUpdates || "",
-      submittedAt,
-    ]);
+      data: {
+        fullName,
+        email,
+        phoneNumber,
+        organisationBusiness,
+        roleJobTitle,
+        levelOfKnowledge,
+        areasOfInterest,
+        whatToLearn,
+        preferredFormat,
+        receiveUpdates,
+        submittedAt,
+      },
+    });
 
     return jsonSuccess(
       "Cyber Security Training form submitted successfully",
@@ -64,7 +68,7 @@ export async function POST(req: Request) {
       201
     );
   } catch (error) {
-    console.error("Google Sheet Error:", error);
+    console.error("Form submission error (cyber-training):", error);
     return jsonError("Something went wrong while submitting the form", 500);
   }
 }

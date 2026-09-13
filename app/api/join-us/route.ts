@@ -67,7 +67,7 @@ export async function POST(req: Request) {
       201
     );
   } catch (error) {
-    console.error("Google Sheet Error:", error);
+    console.error("Form submission error (join-us):", error);
     return jsonError("Something went wrong while submitting the form", 500);
   }
 }
