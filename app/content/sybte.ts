@@ -427,7 +427,7 @@ export const publicSources = [
 ];
 
 export const contactDetails = {
-  email: "info@gmblacktechexpo.co.uk",
+  email: "sybte@blacktechexpo.co.uk",
   venue: "Sheffield Technology Parks, Cooper Buildings",
   address: "Arundel Street, Sheffield City Centre, Sheffield S1 2NS",
   regionalHead: "Rose Gordon, Regional Head (South Yorkshire)",
