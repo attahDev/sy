@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Info, Mic, Users, Wrench } from "lucide-react";
+import { Mic, Users, Wrench } from "lucide-react";
 
 import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader } from "../../components/site/Section";
-import { Chip, Monogram, NoteCallout } from "../../components/site/Cards";
+import { Chip, Monogram } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 import { team, type TeamMember } from "../../content/sybte";
 
@@ -189,17 +189,6 @@ export default function TeamPage() {
               )}
             </Reveal>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <NoteCallout title="Before publication" icon={Info}>
-            <p>
-              The final team list, exact titles, biographies, headshots and
-              publication consent are confirmed internally before going live.
-              Additional programme leads, technical volunteers, panel advisers
-              and ambassadors are added as those roles are agreed.
-            </p>
-          </NoteCallout>
         </div>
       </Section>
 

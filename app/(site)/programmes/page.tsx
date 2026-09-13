@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Info, Rocket, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { Rocket, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader } from "../../components/site/Section";
-import { NoteCallout } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 import { roadmap } from "../../content/sybte";
 
@@ -259,17 +258,6 @@ export default function ProgrammesPage() {
               );
             })}
           </div>
-        </div>
-
-        <div className="mt-16">
-          <NoteCallout title="Why the roadmap is framed this way" icon={Info} tone="dark">
-            <p>
-              We deliberately present a living roadmap rather than fixed
-              promises. Milestone owners, dates and detailed commitments are
-              confirmed internally before publication, and the roadmap is
-              reviewed as partnerships, funding and community priorities change.
-            </p>
-          </NoteCallout>
         </div>
       </Section>
 

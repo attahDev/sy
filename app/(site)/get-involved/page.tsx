@@ -23,7 +23,7 @@ import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader, Rule } from "../../components/site/Section";
-import { Chip, NoteCallout } from "../../components/site/Cards";
+import { Chip } from "../../components/site/Cards";
 import {
   ActionLink,
   ModalButton,
@@ -336,27 +336,6 @@ export default function GetInvolvedPage() {
               </div>
             </Reveal>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <NoteCallout title="How we handle your information" icon={ShieldCheck}>
-            <p>
-              Before launch the team confirms the lawful basis, privacy notice,
-              data-retention arrangements, access permissions and consent
-              wording for all information collected through these forms.
-            </p>
-            <p>
-              Every form includes explicit consent for future updates, and you
-              can ask us to remove your details at any time by emailing{" "}
-              <a
-                href={`mailto:${contactDetails.email}`}
-                className="font-semibold text-[#D7263D] underline decoration-[#D7263D]/30 underline-offset-4 transition-colors hover:text-[#0D1B3E]"
-              >
-                {contactDetails.email}
-              </a>
-              .
-            </p>
-          </NoteCallout>
         </div>
       </Section>
 

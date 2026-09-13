@@ -5,7 +5,6 @@ import {
   Eye,
   GraduationCap,
   HeartHandshake,
-  Info,
   Laptop,
   MapPin,
   Rocket,
@@ -19,7 +18,7 @@ import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader, Rule } from "../../components/site/Section";
-import { FeatureCard, NoteCallout } from "../../components/site/Cards";
+import { FeatureCard } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 import { boroughs } from "../../content/sybte";
 
@@ -315,7 +314,7 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="mt-12 max-w-xl">
           <Reveal className="flex flex-col justify-center rounded-[26px] bg-[#0D1B3E] p-9 sm:p-11">
             <p className="font-open text-[12px] font-semibold uppercase leading-none tracking-[0.3em] text-[#FFD700]">
               Regional context
@@ -330,25 +329,6 @@ export default function AboutPage() {
               regional growth cluster.
             </p>
           </Reveal>
-
-          <NoteCallout title="How we use external data" icon={Info}>
-            <p>
-              Regional figures above belong to their original sources and are
-              attributed accordingly. They describe the environment SYBTE works
-              in — they are not SYBTE-owned data.
-            </p>
-            <p>
-              Our own programme metrics are published separately and
-              date-stamped on the{" "}
-              <a
-                href="/impact"
-                className="font-semibold text-[#D7263D] underline decoration-[#D7263D]/30 underline-offset-4 transition-colors hover:text-[#0D1B3E]"
-              >
-                Community Impact
-              </a>{" "}
-              page.
-            </p>
-          </NoteCallout>
         </div>
       </Section>
 

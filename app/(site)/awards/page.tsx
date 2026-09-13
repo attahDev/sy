@@ -4,7 +4,6 @@ import {
   Award,
   GraduationCap,
   HeartPulse,
-  Info,
   Lightbulb,
   Sparkles,
   Trophy,
@@ -15,7 +14,7 @@ import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader, Rule } from "../../components/site/Section";
-import { Chip, NoteCallout } from "../../components/site/Cards";
+import { Chip } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 
 export const metadata: Metadata = {
@@ -257,7 +256,7 @@ export default function AwardsPage() {
           ))}
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mt-12 max-w-2xl">
           <Reveal className="rounded-[26px] bg-[#0D1B3E] p-9 sm:p-11">
             <div className="flex flex-wrap items-center gap-3">
               <Chip variant="gold">
@@ -288,14 +287,6 @@ export default function AwardsPage() {
               ))}
             </ul>
           </Reveal>
-
-          <NoteCallout title="Awaiting final confirmation" icon={Info}>
-            <p>
-              The final award title, categories, eligibility criteria, dates and
-              nomination rules are confirmed internally before publication, and
-              approved awards campaign artwork is used for all promotion.
-            </p>
-          </NoteCallout>
         </div>
       </Section>
 

@@ -14,7 +14,7 @@ import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader, Rule } from "../../components/site/Section";
-import { Chip, FeatureCard, Monogram, NoteCallout } from "../../components/site/Cards";
+import { Chip, FeatureCard, Monogram } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 
 export const metadata: Metadata = {
@@ -173,17 +173,7 @@ export default function SpotlightPage() {
             title="How every spotlight is structured"
             intro="A consistent structure keeps features comparable, fair and quick to read — and it makes clear what we need from each contributor before publication."
             tone="cream"
-          >
-            <div className="mt-9">
-              <NoteCallout title="Consent comes first" icon={ShieldCheck}>
-                <p>
-                  No feature is published without written consent, a
-                  fact-checked story and confirmation of how the person wants
-                  their name, role and organisation described.
-                </p>
-              </NoteCallout>
-            </div>
-          </SectionHeader>
+          />
 
           {/* Annotated template card */}
           <Reveal delay={140}>
