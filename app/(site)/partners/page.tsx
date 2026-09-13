@@ -5,14 +5,13 @@ import {
   Clock,
   Handshake,
   Mail,
-  ShieldCheck,
 } from "lucide-react";
 
 import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader, Rule } from "../../components/site/Section";
-import { Chip, NoteCallout } from "../../components/site/Cards";
+import { Chip } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 import { contactDetails, partners, partnershipOffers } from "../../content/sybte";
 
@@ -174,28 +173,6 @@ export default function PartnersPage() {
               </p>
             </Reveal>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <NoteCallout title="Website governance note" icon={ShieldCheck}>
-            <p>
-              We only place an organisation&apos;s logo under &ldquo;Partners&rdquo; after
-              confirming the relationship, the preferred naming, logo permission
-              and whether it should be described as Partner, Delivery Partner,
-              Collaborator, Supporter or Community Partner.
-            </p>
-            <p>
-              If your organisation appears here and you would like the wording,
-              category or listing changed, please{" "}
-              <a
-                href={`mailto:${contactDetails.email}`}
-                className="font-semibold text-[#D7263D] underline decoration-[#D7263D]/30 underline-offset-4 transition-colors hover:text-[#0D1B3E]"
-              >
-                contact the team
-              </a>
-              .
-            </p>
-          </NoteCallout>
         </div>
       </Section>
 

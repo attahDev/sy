@@ -15,7 +15,7 @@ import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader } from "../../components/site/Section";
-import { CheckList, Chip, NoteCallout, StatCard } from "../../components/site/Cards";
+import { CheckList, Chip, StatCard } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 import {
   boroughs,
@@ -105,21 +105,6 @@ export default function ImpactPage() {
               delay={index * 90}
             />
           ))}
-        </div>
-
-        <div className="mt-12">
-          <NoteCallout title="Reading these numbers correctly" icon={Info}>
-            <p>
-              An earlier public update recorded 30 participants across the first
-              three cyber security and AI sessions. That figure is superseded by
-              the totals above and should not be added to them.
-            </p>
-            <p>
-              We publish the newest verified dashboard figures only, with a
-              visible data date, and an internal owner reviews these statistics
-              quarterly.
-            </p>
-          </NoteCallout>
         </div>
       </Section>
 

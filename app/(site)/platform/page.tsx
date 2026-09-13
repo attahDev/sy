@@ -5,7 +5,6 @@ import {
   Bot,
   BookOpen,
   Briefcase,
-  Info,
   Leaf,
   LineChart,
   Lock,
@@ -20,7 +19,7 @@ import PageHero from "../../components/site/PageHero";
 import CtaBand from "../../components/site/CtaBand";
 import Reveal from "../../components/site/Reveal";
 import { Section, SectionHeader } from "../../components/site/Section";
-import { Chip, NoteCallout } from "../../components/site/Cards";
+import { Chip } from "../../components/site/Cards";
 import { ActionLink, ModalButton } from "../../components/site/Buttons";
 import { platformTools } from "../../content/sybte";
 
@@ -289,15 +288,6 @@ export default function PlatformPage() {
                 </ActionLink>
               </div>
             </div>
-
-            <NoteCallout title="Registration and data" icon={Info}>
-              <p>
-                Creating an account requires an email address and verification.
-                Before launch, the team confirms the lawful basis, privacy
-                notice, retention arrangements and consent wording for all
-                information collected through the platform and its forms.
-              </p>
-            </NoteCallout>
           </Reveal>
         </div>
       </Section>
