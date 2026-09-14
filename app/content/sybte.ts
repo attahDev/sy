@@ -81,6 +81,11 @@ export const navigation: NavItem[] = [
         description: "Founders, students, leaders and alumni stories.",
       },
       {
+        label: "Recognition",
+        href: "/recognition",
+        description: "Award Recognition — honouring excellence across the region.",
+      },
+      {
         label: "Awards",
         href: "/awards",
         description: "Recognising South Yorkshire change makers.",

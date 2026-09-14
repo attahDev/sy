@@ -4,10 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
+  Award,
   Briefcase,
   CalendarDays,
   ChevronDown,
   GraduationCap,
+  Heart,
   Inbox,
   Leaf,
   LayoutDashboard,
@@ -35,6 +37,7 @@ const navItems = [
   { label: "Academy", href: "/dashboard/academy", icon: GraduationCap },
   { label: "Climate Change", href: "/dashboard/green-impact", icon: Leaf },
   { label: "Community", href: "/dashboard/community", icon: Users },
+  { label: "Tributes", href: "/dashboard/tributes", icon: Heart },
 ];
 
 const studioItems = [
@@ -51,6 +54,7 @@ const adminItems = [
   { label: "Events", href: "/dashboard/admin/events", icon: CalendarDays },
   { label: "News", href: "/dashboard/admin/news", icon: Newspaper },
   { label: "Green projects", href: "/dashboard/admin/green-projects", icon: Sprout },
+  { label: "Award Recognition", href: "/dashboard/admin/honorees", icon: Award },
   { label: "Form submissions", href: "/dashboard/admin/form-submissions", icon: Inbox },
   { label: "Users", href: "/dashboard/admin/users", icon: UserCog },
 ];
